@@ -52,7 +52,7 @@ function recuperar_tareas(){
                     </tr>
                 </thead>
                 <tbody>`;
-            var fin=`
+            var fin = `
                 </tbody>
             </table>
             </div>
@@ -90,6 +90,10 @@ function recuperar_tareas(){
                 <label for="contraseña">Contraseña:</label>
                 <input type="password" class="form-control" name="contraseña" id="contraseña" placeholder="Ingrese Contraseña" onpaste="return false">
                 </div>
+                <span id="mensaje4">Contraseña con mayúsculas</span>
+                <span id="mensaje1">Contraseña con numeros</span>
+                <span id="mensaje2">Contraseña con simbolos</span>
+                <span id="mensaje3">Contraseña mayor a 8 caracteres</span>
                 <div class="col-md-12">
                 <button type="button" class="btn btn-primary" id="btnIngreso">Crear Usuario</button>
                 </div>
@@ -197,6 +201,36 @@ $(document).on('click','#btnIngreso',function(){
             text: 'Complete todos los datos!'
           })
     }
+});
+
+
+//Validar correo
+$(document).on("keyup", "#contraseña", function () {
+  var pass = $("#contraseña").val();
+
+  if (/[0-9]/.test(pass)) {
+    $("#mensaje1").css("color", "green");
+  } else {
+    $("#mensaje1").css("color", "red");
+  }
+
+  if (/[^A-Za-z0-9]/.test(pass)) {
+    $("#mensaje2").css("color", "green");
+  } else {
+    $("#mensaje2").css("color", "red");
+  }
+
+  if (/[A-Z]/.test(pass)) {
+    $("#mensaje4").css("color", "green");
+  } else {
+    $("#mensaje4").css("color", "red");
+  }
+
+  if (pass.length > 8) {
+    $("#mensaje3").css("color", "green");
+  } else {
+    $("#mensaje3").css("color", "red");
+  }
 });
 
 $(document).on('click','.update_adm',function(){
