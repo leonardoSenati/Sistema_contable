@@ -89,7 +89,7 @@ function recuperar_tareas(){
                 </div>
                 <div class="col-md-6">
                 <label for="contraseña">Contraseña:</label>
-                <input type="password" class="form-control" name="contraseña" id="contraseña" placeholder="Ingrese Contraseña" onpaste="return false">
+                <input type="text" class="form-control" name="contraseña" id="contraseña" placeholder="Ingrese Contraseña" onpaste="return false">
                 </div>
                 <span id="mensaje4">Contraseña con mayúsculas</span>
                 <span id="mensaje1">Contraseña con numeros</span>
