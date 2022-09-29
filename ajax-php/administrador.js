@@ -85,6 +85,7 @@ function recuperar_tareas(){
                 <div class="col-md-6">
                 <label for="correo">Correo Electronico:</label>
                 <input type="email" class="form-control" name="correo" id="correo" placeholder="Ingrese Correo Electronico" onpaste="return false">
+                <span id="mensaje5"></span>
                 </div>
                 <div class="col-md-6">
                 <label for="contraseña">Contraseña:</label>
@@ -204,7 +205,7 @@ $(document).on('click','#btnIngreso',function(){
 });
 
 
-//Validar correo
+//Validar contraseña
 $(document).on("keyup", "#contraseña", function () {
   var pass = $("#contraseña").val();
 
@@ -231,6 +232,19 @@ $(document).on("keyup", "#contraseña", function () {
   } else {
     $("#mensaje3").css("color", "red");
   }
+});
+
+//Validar correo
+$(document).on("keyup", "#correo", function () {
+    var correo = $("#correo").val();
+
+    if (/[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}/.test(correo)
+    ) {
+      $("#mensaje5").text("Correo valido").css("color", "green");
+    } else {
+      $("#mensaje5").text("Correo invalido").css("color", "red");
+    }
+
 });
 
 $(document).on('click','.update_adm',function(){
