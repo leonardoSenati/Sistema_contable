@@ -165,7 +165,7 @@ $(document).on('click','.page-link',function(){
     var pag =this.id;
     var cant=document.getElementById("registro").value;
     paginacion(cant,pag);
-    var limite=(pag*10)-9;
+    var limite=(pag*10)-10;
     $.ajax({
         
         url:'../php/prueba_select.php' ,

@@ -1,7 +1,7 @@
 <?php
 require '../conexion.php';
 $sql ="select i.id_ingreso,i.id_caja,p.n_proyecto,i.fecha,i.monto_ingreso,c.fecha as fecha_caja from ingreso as i inner join caja as c on c.id_caja=i.id_caja
-inner join proyecto as p on p.id_proyecto=c.id_proyecto limit 1,10";
+inner join proyecto as p on p.id_proyecto=c.id_proyecto limit 0,10";
 $resultado = $connection->prepare($sql);
 $resultado->execute();
 $json=array();
