@@ -40,11 +40,12 @@ if(isset($_SESSION['dni_admin'])){
         </div>
         <div class="row mb-3">
           <div class="col-sm-10" id="login">
-            <input type="text" class="form-control" id="contra_log" min="3" max="15" pattern="[a-zA-z]{0,9}" placeholder="Ingresa tu contraseña :" name ="contraseña">
+            <input type="password" class="form-control" id="contra_log" min="3" max="15" pattern="[a-zA-z]{0,9}" placeholder="Ingresa tu contraseña :" name ="contraseña">
           </div>
           <p id="seguridad"></p>
             <p id="dd"></p>
         </div>
+        
         <button type="button" id="login-ingresar" class="login btn btn-primary">Ingresar</button>
       </form>
     </div>
@@ -54,7 +55,7 @@ if(isset($_SESSION['dni_admin'])){
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="login.js"></script>
-<script src="plantilla/validacion.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 </body>
 </html>
 <?php 
