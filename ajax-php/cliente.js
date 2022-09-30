@@ -19,7 +19,7 @@ function recuperar_tarea(){
                      <th scope="col">RUC</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellido</th>
-                    <th scope="col">correo</th>
+                    <th scope="col">Correo</th>
                     <th scope="col">Télefono</th>
                     <th scope="col">Tipo de Empresa</th>
                     <th scope="col">
@@ -187,16 +187,18 @@ function recuperar_tarea(){
       
       <button class="agregar_pro btn btn-primary" ><i class="bi bi-file-earmark-plus-fill"></i> Agregar Proyecto</button>
 
-      <table class="table">
-        <thead>
-            <tr>
-            <th scope="col">Ruc</th>
-            <th scope="col">Proyecto</th>
-            <th scope="col">Inversión</th>
-            <th scope="col">Estado</th>
-            <th scope="col">Accion</th>
-            </tr>
-        </thead>
+      <div class="tabla-responsive" id="no-more-tables">
+            <table class="table modal-responsive">
+            <thead>
+                <tr>
+                <th scope="col">Ruc</th>
+                <th scope="col">Proyecto</th>
+                <th scope="col">Inversión</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Accion</th>
+                </tr>
+            </thead>
+        </div>
         <tbody id="lista_p">
         
         </tbody>
@@ -233,9 +235,9 @@ $(document).on('click','.proyecto_cli',function(){
 
                 <tr ID_P="${fila.id_proyecto}">
                     <td data-title="RUC">${fila.ruc_cliente}</td>
-                    <td data-title="Nombre">${fila.n_proyecto}</td>
-                    <td data-title="Apellido">${fila.inversion}</td>
-                    <td id="est" data-title="Correo">${fila.estad}</td>
+                    <td data-title="Proyecto">${fila.n_proyecto}</td>
+                    <td data-title="Inversion">${fila.inversion}</td>
+                    <td id="est" data-title="Estado">${fila.estad}</td>
                     <td>
                     <button class="eliminar_pro btn btn-danger"><i class="bi bi-trash"></i></button> 
                     </td>

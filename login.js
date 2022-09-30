@@ -1,9 +1,5 @@
 $(document).on('click','#login-ingresar',function(){
     login();
-
-    
- 
-    
 });
 
 $(document).on("keyup","#contra_log",function(){
@@ -64,6 +60,7 @@ function ip(){
             data:{ip:c_ip,fecha_h:f_h},
             success:function(data){
                 
+                
             }
         });             
     });
@@ -123,3 +120,15 @@ $(document).keyup(function(e){
        login();
     }
 });
+
+async function getIpClient() {
+    try {
+      const response = await axios.get('https://api.ipify.org?format=json');
+      var ip=response.data.ip;//captura la ip
+      
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  
+

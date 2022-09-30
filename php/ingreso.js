@@ -14,11 +14,11 @@ function recuperar_ingreso(){
             <div class="tabla-responsive" id="no-more-tables">
             <div class="row g-3">
             <div class="col-md-2">
-            <label for="inputAddress" class="form-label">fecha Inicio</label>
+            <label for="inputAddress" class="form-label">Fecha Inicio</label>
             <input type="date" class="form-control" id="fechmin" placeholder="1234 Main St" max="2028-12-31">
             </div>
             <div class="col-md-2">
-                <label for="inputAddress" class="form-label">fecha Fin</label>
+                <label for="inputAddress" class="form-label">Fecha Fin</label>
                 <input type="date" class="form-control" id="fechmax" placeholder="1234 Main St" max="2028-12-31">
             </div>
             <div class="col-md-2">
