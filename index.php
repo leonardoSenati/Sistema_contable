@@ -19,7 +19,7 @@ if (isset($_SESSION['dni_admin'])) {
     <!--  link de iconos de bootrack  -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/styles.css">
-<<<<<<< HEAD
+
     
 </head>
 <body>
@@ -54,48 +54,10 @@ if (isset($_SESSION['dni_admin'])) {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="login.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </body>
 </html>
 <?php 
-=======
-
-  </head>
-
-  <body>
-    <div class="con_login">
-      <div class="con">
-        <img src="imagenes/img1.jpg" alt="" id="img1">
-      </div>
-      <div class="con">
-        <form class="for_login" action="" method="post">
-          <img src="imagenes/img2.webp" alt="" id="img2">
-          <h1>Iniciar sesión</h1>
-          <div class="row mb-3">
-            <div class="col-10" id="login">
-              <input type="text" class="form-control" id="dni_admin" placeholder="Ingresa tu DNI :" name="dni_admin" onpaste="return false">
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col-sm-10" id="login">
-              <input type="password" class="form-control" id="contra_log"  placeholder="Ingresa tu contraseña :" name="contraseña">
-            </div>
-          </div>
-          <button type="button" id="login-ingresar" class="login btn btn-primary">Ingresar</button>
-        </form>
-      </div>
-
-    </div>
-
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="login.js"></script>
-    <script src="plantilla/validacion.js"></script>
-    <!--<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>-->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  </body>
-
-  </html>
-<?php
->>>>>>> fdd97e5be8876f5cbc4f3453717af1f24b0e5e05
 }
 ?>
