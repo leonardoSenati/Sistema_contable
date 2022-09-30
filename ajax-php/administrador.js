@@ -85,16 +85,14 @@ function recuperar_tareas(){
                 <div class="col-md-6">
                 <label for="correo">Correo Electronico:</label>
                 <input type="email" class="form-control" name="correo" id="correo" placeholder="Ingrese Correo Electronico" onpaste="return false">
-                <span id="mensaje5"></span>
+                <span id="mensajeCorreo"></span>
                 </div>
                 <div class="col-md-6">
                 <label for="contraseña">Contraseña:</label>
                 <input type="text" class="form-control" name="contraseña" id="contraseña" placeholder="Ingrese Contraseña" onpaste="return false">
+                <span id="mensajePassword" style="font-size: 13px" ></span>
                 </div>
-                <span id="mensaje1">Contraseña con numeros</span>
-                <span id="mensaje2">Contraseña con simbolos</span>
-                <span id="mensaje3">Contraseña mayor a 8 caracteres</span>
-                <span id="mensaje4">Contraseña con mayúsculas</span>
+
                 <div class="col-md-12">
                 <button type="button" class="btn btn-primary" id="btnIngreso">Crear Usuario</button>
                 </div>
@@ -130,16 +128,16 @@ function recuperar_tareas(){
                 <div class="col-md-6">
                 <label for="correo">Correo Electronico:</label>
                 <input type="email" class="form-control" name="correo2" id="correo2" placeholder="Ingrese Correo Electronico" onpaste="return false">
+
                 <span id="mensaje55"></span>
+
                 </div>
                 <div class="col-md-6">
                 <label for="contraseña">Contraseña:</label>
                 <input type="password" class="form-control" name="contraseña2" id="contraseña2" placeholder="Ingrese Contraseña" onpaste="return false">                
+                <span id="mensajePassword2" style="font-size: 13px" ></span>
                 </div>
-                <span id="mensaje11">Contraseña con numeros</span>
-                <span id="mensaje22">Contraseña con simbolos</span>
-                <span id="mensaje33">Contraseña mayor a 8 caracteres</span>
-                <span id="mensaje44">Contraseña con mayúsculas</span>
+
                 <div class="col-md-12">
                 <button type="button" class="btn btn-primary" id="btnIngreso2">Actualizar</button>
                 </div>
@@ -178,7 +176,8 @@ $(document).on('click','#btnIngreso',function(){
     var nombre=$('#nombre').val();
     var apellido=$('#apellido').val();
     var correo=$('#correo').val();
-    var password=$('#contraseña').val();
+    var password=$('#contraseña').val();    
+    
 
     if(dni_admin !=='' && nombre !=='' && apellido !=='' && correo !=='' && password !=='' && validarContraGlobal == 4 && validarCorreoGlobal == 1){
         $.ajax({
@@ -223,31 +222,25 @@ $(document).on("keyup", "#contraseña", function () {
     var validarContraseña = 0;
 
   if (/[0-9]/.test(pass)) {
-    $("#mensaje1").css("color", "green");
     validarContraseña++;
-  } else {
-    $("#mensaje1").css("color", "red");
-  }
+  } 
 
   if (/[^A-Za-z0-9]/.test(pass)) {
-    $("#mensaje2").css("color", "green");
     validarContraseña++
-  } else {
-    $("#mensaje2").css("color", "red");
-  }
+  } 
 
-  if (/[A-Z]/.test(pass)) {
-    $("#mensaje4").css("color", "green");
+  if (/[A-Z]/.test(pass)) {    
     validarContraseña++
-  } else {
-    $("#mensaje4").css("color", "red");
-  }
+  } 
 
-  if (pass.length > 8) {
-    $("#mensaje3").css("color", "green");
+  if (pass.length > 8) {   
     validarContraseña++
+  } 
+
+  if(validarContraseña == 4){
+    $("#mensajePassword").text("La contraseña debe ser mayor a 8 caracteres  y contener '123 , /@!*, QWEASD'").css("color", "green");
   } else {
-    $("#mensaje3").css("color", "red");
+    $("#mensajePassword").text("La contraseña debe ser mayor a 8 caracteres y contener '123 , /@!*, QWEASD'").css("color", "red")
   }
 
   validarContraGlobal = validarContraseña;
@@ -258,30 +251,32 @@ $(document).on("keyup", "#contraseña", function () {
 
 $(document).on("keyup", "#contraseña2", function () {
   var pass = $("#contraseña2").val();
+  var validarContraseña = 0;
 
   if (/[0-9]/.test(pass)) {
-    $("#mensaje11").css("color", "green");
-  } else {
-    $("#mensaje11").css("color", "red");
+    validarContraseña++;
   }
 
   if (/[^A-Za-z0-9]/.test(pass)) {
-    $("#mensaje22").css("color", "green");
-  } else {
-    $("#mensaje22").css("color", "red");
+    validarContraseña++
   }
 
   if (/[A-Z]/.test(pass)) {
-    $("#mensaje44").css("color", "green");
-  } else {
-    $("#mensaje44").css("color", "red");
+    validarContraseña++
   }
 
   if (pass.length > 8) {
-    $("#mensaje33").css("color", "green");
-  } else {
-    $("#mensaje33").css("color", "red");
+    validarContraseña++
   }
+
+  if (validarContraseña == 4) {
+    $("#mensajePassword2").text("La contraseña debe ser mayor a 8 caracteres  y contener '123 , /@!*, QWEASD'").css("color", "green");
+  } else {
+    $("#mensajePassword2").text("La contraseña debe ser mayor a 8 caracteres y contener '123 , /@!*, QWEASD'").css("color", "red")
+  }
+
+  validarContraGlobal = validarContraseña;
+
 });
 
 //Validar correo
@@ -301,13 +296,21 @@ $(document).on("keyup", "#correo", function () {
 
 $(document).on("keyup", "#correo2", function () {
     var correo = $("#correo2").val();
+    var validarCorreo = 1;
+
 
     if (/[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}/.test(correo)
     ) {
       $("#mensaje55").text("Correo valido").css("color", "green");
+      validarCorreo = 1;
+      console.log(validarCorreo)
     } else {
       $("#mensaje55").text("Correo invalido").css("color", "red");
+      validarCorreo = 0;
+      
     }
+  console.log(validarCorreo)
+  validarCorreoGlobal = validarCorreo;
 
 });
 
@@ -321,6 +324,9 @@ $(document).on('click','.update_adm',function(){
         $('#nombre2').val(t.nom);
         $('#apellido2').val(t.ape);
         $('#correo2').val(t.email);
+        $('#contraseña2').val("");
+        $('#mensajePassword2').text("");
+
         edit=true;
     });
 });
@@ -331,7 +337,7 @@ $(document).on('click','#btnIngreso2',function(){
     var apellido=$('#apellido2').val();
     var correo=$('#correo2').val();
     var password=$('#contraseña2').val();
-    if(dni_admin !=='' && nombre !=='' && apellido !=='' && correo !=='' && password !==''){
+  if (dni_admin !== '' && nombre !== '' && apellido !== '' && correo !== '' && password !== '' && validarContraGlobal == 4 && validarCorreoGlobal == 1){
         $.ajax({
             url:'../ajax-php/update-admin.php',
             type:'POST',
