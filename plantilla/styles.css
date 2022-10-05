@@ -1,5 +1,7 @@
+/* Fuentes */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
+/* Variables para los colores */
 :root {
     --main-color: #2f6cdd;
     --color-dark: #1D2231;
@@ -7,6 +9,8 @@
 
 }
 
+
+/* Reseteo de estilos */
 * {
     padding: 0;
     margin: 0;
@@ -17,34 +21,43 @@
 
 }
 
+/* Estilos del sidebar */
 .sidebar {
     width: 300px;
     position: fixed;
     left: 0;
     top: 0;
     height: 100%;
-    background: var(--main-color);
+    background-color: var(--main-color);
     z-index: 100;
     transition: width 300ms;
 }
 
+/* Estilos del logo dentro del sidebar */
 .sidebar-brand {
     height: 90px;
     padding: 1rem 0rem 1rem 2rem;
     color: #fff;
+    
 }
 
+/* Estilos del logo */
 .sidebar-brand span {
     display: inline-block;
     padding-right: 1rem;
+    
 }
 
+/* Estilos del texto del logo */
 .sidebar-brand span:last-child {
     font-size: 1rem;
+    
 }
 
+/* Menu del sidebar */
 .sidebar-menu {
     margin-top: 1rem;
+    
 }
 
 /* Para bootstrap */
@@ -52,12 +65,15 @@
     padding: 0 !important;
 }
 
+/* Lista del menu del sidebar */
 .sidebar-menu li {
     width: 100%;
     margin-bottom: 1.5rem;
     padding-left: 1rem;
+    
 }
 
+/* Enlaces del sidebar */
 .sidebar-menu a {
     padding-left: 1rem;
     display: block;
@@ -66,40 +82,45 @@
     text-decoration: none;
     transition: background .5s;
     transition: padding-top .25s;
-    /* transition: padding-bottom .3s; */
+    
 
 }
 
+/* Enlaces del sidebar cuando el mouse esta posicionado */
 .sidebar-menu a:hover {
     background: #fff !important;
     padding-top: 1rem;
     padding-bottom: 1rem;
     color: var(--main-color) !important;
     border-radius: 30px 0 0px 30px;
+    
 }
 
-/* iconos del sidebar */
+/* Iconos del sidebar */
 .sidebar-menu a span:first-child {
     font-size: 1.5rem;
     padding-right: 1rem;
 }
 
+/* Estilos del sidebar pequeño*/
 #nav-toggle:checked+.sidebar {
     width: 70px;
+    
 }
 
-
+/*  Estilos del menu  y el logo del sidebar pequeño*/
 #nav-toggle:checked+.sidebar .sidebar-brand,
 #nav-toggle:checked+.sidebar li {
     padding-left: 1rem;
     text-align: center;
 }
 
+/* Estilos de los enlaces del sidebar pequeño */
 #nav-toggle:checked+.sidebar li a {
     padding-left: 0rem;
 }
 
-
+/* EStilos de los items cuando el sidebar esta oculto */
 #nav-toggle:checked+.sidebar .sidebar-brand h2 span:last-child,
 #nav-toggle:checked+.sidebar li a span:last-child {
     display: none;
@@ -107,26 +128,29 @@
 
 #nav-toggle:checked~.main-content {
     margin-left: 70px;
-    background-color: red;
+    
 }
 
+/* Posicionar el header cuando el menu */
 #nav-toggle:checked~.main-content header {
     width: calc(100% - 70px);
     left: 70px;
 
 }
 
+/* Estilos del contenido principal */
 .main-content {
     transition: margin-left 300ms;
     margin-left: 300px;
 
 }
 
+/* Mover el contenido principal cuando el sidebar sea pequeño */
 #nav-toggle:checked~.main-content {
     margin-left: 70px;
 }
 
-
+/* Estilos del header */
 header {
     background: #FFF;
     display: flex;
@@ -143,88 +167,54 @@ header {
 }
 
 
-
+/* Estilos del input */
 #nav-toggle {
     display: none;
 }
 
+/* Estilos de los titulos de los paneles */
 header h2 {
     color: #222;
 }
 
+/* Estilos del icono del menu */
 header label span {
     font-size: 1.7rem;
     padding-right: 1rem;
+    
 }
 
-.search-wrapper {
-    border: 1px solid #ccc;
-    border-radius: 30px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    overflow-x: hidden;
-}
-
-.search-wrapper span {
-    display: inline-block;
-    padding: 0 1rem;
-    font-size: 1.5rem;
-}
-
-.search-wrapper input {
-    height: 100%;
-    padding: .5rem;
-    border: none;
-    outline: none;
-}
-
-.user-wrapper {
-    display: flex;
-    align-items: center;
-}
-
-.user-wrapper img {
-    width: 40px;
-    height: 40px;
-
-    border-radius: 50%;
-    margin-right: 1rem;
-
-}
-
-
-
-.user-wrapper small {
-    display: inline-block;
-    color: var(--text-grey);
-}
-
+/* Estilos del cuerpo del panel */
 main {
     margin-top: 85px;
     padding: 2rem 1.5rem;
     background: #f0f0f9;
     min-height: calc(100vh - 90px);
+    
 }
 
+/* Estilos de los elementos del panel */
 .cards {
     margin-top: 1rem;
+    
 }
 
 
-
+/* Estilos de la imagen del ususario */
 .log-out img {
     border-radius: 50%;
+    
 }
 
 .log-out {
     display: flex;
     gap: 10px;
     border-radius: 10px;
+    
 }
 
 
-
+/* Estilos para pantallas escitorio*/
 @media only screen and (max-width:1200px) {
 
     .sidebar {
@@ -260,38 +250,16 @@ main {
 
 }
 
-@media only screen and (max-width:960px) {
+/* Estilos para pantallas celulares y tablets */
 
-    .cards {
-        grid-template-columns: repeat(3, 1fr);
-    }
+@media only screen and (max-width:768px) {     
 
-    .recent-grid {
-        grid-template-columns: 50% 50%;
-    }
-
-}
-
-
-@media only screen and (max-width:768px) {
-
-    .cards {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .recent-grid {
-        grid-template-columns: 100%;
-    }
-
-    .search-wrapper {
-        display: none;
-    }
-
-
+    /* Ocultar el sidebar */
     .sidebar {
         left: -100% !important;
     }
 
+    /* Estilos del icono del menu */
     header h2 label {
         display: flex;
         justify-content: center;
@@ -303,34 +271,42 @@ main {
         height: 40px;
         border-radius: 50%;
         color: white;
+        
     }
-
+    /* Estilos del icono del menu */
     header h2 span {
         text-align: center;
-        padding-right: 0;
+        padding-right: 0;       
+        
     }
 
+    /* Estilos del titulo del header */
     header h2 {
         font-size: 1.1rem;
         display: flex;
         align-items: center;
+        
     }
 
     header div:first-child {
         padding-top: 10px;
+        
     }
 
-
+    /* Estilos del contenido principal */
     .main-content {
         width: 100%;
         margin-left: 0;
     }
 
+    /* Estilos del header */
     header {
         width: 100% !important;
         left: 0 !important;
+        
     }
 
+    /* Estilos del menu del sidebar cuando se hace click en el menu */
     #nav-toggle:checked+.sidebar {
         left: 0 !important;
         z-index: 100;
@@ -338,7 +314,7 @@ main {
 
     }
 
-
+    /* Estilos de los elementos del menu */
     #nav-toggle:checked+.sidebar .sidebar-brand,
     #nav-toggle:checked+.sidebar li {
         padding-left: 2rem;
@@ -346,67 +322,42 @@ main {
 
     }
 
+    /* Estilos de los enlaces del sidebar */
     #nav-toggle:checked+.sidebar li a {
         padding-left: 0rem;
     }
 
-
+    /* EStilos de los textos del sidebar */
     #nav-toggle:checked+.sidebar .sidebar-brand h2 span:last-child,
     #nav-toggle:checked+.sidebar li a span:last-child {
         display: inline;
     }
 
+    /* No mover el contenido principal */
     #nav-toggle:checked~.main-content {
         margin-left: 0rem !important;
     }
 
 }
 
-@media only screen and (max-width:560px) {
 
-    .cards {
-        grid-template-columns: 100%
-    }
+/* Estilos para pantallas muy pequeñas (500px) */
+@media (max-width: 400px) {    
 
-
-}
-
-@media (max-width: 500px) {
-    
-
+    /* Ocultar la imagen del perfil de usuario */
     .log-out img {
         display: none;
-    }
-
-
-    /* .log-out {
-        padding: .3rem;
-        border-radius: 5px;
-        min-width: 100px;
-        max-height: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 1rem;
-    }
-
-    .log-out a {
-        color: white;
-        text-decoration: none;
-        text-align: center;
-    } */
+    }   
 }
 
-.tabla-responsive {
-    /* background-color: red; */
-}
 
+
+/*  Hacer responsive las tablas*/
 @media only screen and (max-width: 1060px) {
 
     #no-more-tables tbody,
     #no-more-tables tr,
     #no-more-tables td {
-        /* background-color: blue; */
         display: block;
     }
 
@@ -427,4 +378,24 @@ main {
         left: 3px;
         font-weight: bold;
     }
+}
+
+/* PESTAÑA EGRESOS */
+#conte{
+    
+    border: 1px solid rgb(162, 162, 162);
+    background-color: rgb(245, 248, 250);
+    
+    width: 100%;
+    height: 50vh;
+    overflow: scroll;
+    
+}
+
+/* PESTAÑA CAJA */
+.cont{
+    border: 1px solid black;
+    width: 100%;
+    height: 40vh;
+    overflow: scroll;
 }

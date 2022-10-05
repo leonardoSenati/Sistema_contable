@@ -1,4 +1,5 @@
 
+/* Resetear estilos */
 *{
     margin: 0;
     padding: 0;
@@ -7,7 +8,7 @@
     
 }
 
-
+/* Estilos del body */
 body {
    background-color: #aac8ff;
     display:flex;
@@ -15,12 +16,16 @@ body {
     justify-content: center;
 
 }
+
+/* Centrar inicio de sesion */
 .con_login {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    
 }
 
+/* Estilos del login */
 .con_login{
     text-align: center;
     display: grid;
@@ -28,21 +33,25 @@ body {
     width: 90%;
     max-width: 800px;
     border-radius: 20px;
-    overflow: hidden;    
+    overflow: hidden; 
+       
 
 }
 
+/* Estilos de los hijos del login */
 .con {
     width: 100%;
     max-width: 400px;
 }
 
+/* Estilos de la imagen del login */
 #img1{
     width: 100%;
     max-width: 400px;
     height: 450px;
 }
 
+/* Estilo del formulario*/
 .for_login{
     display: flex;
     flex-direction: column;
@@ -55,6 +64,7 @@ body {
     
 }
 
+/* Imagen del formulario */
 #img2{
     width: 200px;
     margin-left: 3rem;
@@ -66,13 +76,7 @@ body {
     
 }
 
-
-@media (min-width: 1024px) {
-    .con_login {
-        box-shadow: 10px 5px 10px  rgb(0 0 0 /.3);
-    }
-}
-
+/* Estilos para pantallas pequeñas */
 @media (max-width: 768px) {
 
     .con:first-of-type {
