@@ -1,8 +1,21 @@
+
+/*
+Evento click que se dispara cuando se presiona el link de tipo button para abrir el panel egreso.
+ */
 $(document).on('click','#egre',function(){
     recuperar();
     document.getElementById("panel").innerText="Panel egreso";
+    document.getElementById("titulo_panel").innerText="Panel egresos";
 });
 
+/**
+ * Esta funcion envia datos a traves del metodo GET por medio ajax al archivo bus_tipo_egre.php
+ * método $.ajax
+ * URL - para la petición.
+ * type - especifica que será una petición GET.
+ * data - la información a enviar.
+ *  la var cabecera que contiene el formulario para obtener los datos del cliente,proyecto,descripción, tipo Egreso, Monto y fecha.
+ */
 function recuperar(){
     var cabecera=`
     <div class="main">
@@ -94,6 +107,19 @@ function recuperar(){
     fecha_actual("fecha");
 }
 
+/**
+ * Evento keyup para detectar la pulsación de una tecla en el input con id ruc.
+ * ruc - con el metodo getElementById seleccionamos el elemento por medio del id ruc y capturamos su valor.
+ * método $.ajax 
+ * URL - ruta del archivo bus_cli.php para la petición.
+ * type - especifica que será una petición GET
+ * success - Establece una función a ejecutar si la petición a sido satisfactoria.
+ * lista_actividad - variable que almacenar al objeto 
+ * fila - varible de tipo array - almacena los elemento del objeto.
+ * registros - variable de estructura html donde a la etiqueta option en su valor le colocamos los datos que tiene los respectivos elementos.
+ * datalistOptions - id de la etiqueta datalist - colocando los valores de la var registros en el datalist.
+ * nombre_proyectos - funcion que va enviar como parametro a la variable ruc.
+ */
 $(document).on('keyup','#ruc',function(){
     var ruc=document.getElementById('ruc').value;
     $.ajax({
@@ -114,6 +140,17 @@ $(document).on('keyup','#ruc',function(){
     nombre_proyectos(ruc);
 });
 
+/**
+ * funcion que recibe como parametro el ruc del cliente.
+ * método $.ajax 
+ * URL - ruta del archivo proyecto.php para la petición.
+ * type - especifica que será una petición POST
+ * success - Establece una función a ejecutar si la petición a sido satisfactoria.
+ * lista_actividad - variable que almacenar al objeto 
+ * fila - variable de tipo array - almacena los elementos del objeto.
+ * registro - variable de estructura html donde a la etiqueta option en su valor le colocamos los datos que tiene los respectivos elementos.
+ * proyect - id de la etiqueta datalist - colocando los valores de la var registros en el datalist.
+ */
 function nombre_proyectos(ruc_cliente){
 
     $.ajax({
