@@ -341,7 +341,7 @@ main {
 }
 
 
-/* Estilos para pantallas muy pequeñas (500px) */
+/* Estilos para pantallas menores 400px */
 @media (max-width: 400px) {    
 
     /* Ocultar la imagen del perfil de usuario */
