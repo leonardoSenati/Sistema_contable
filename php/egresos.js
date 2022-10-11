@@ -1,9 +1,7 @@
-
 $(document).on('click','#egre',function(){
     recuperar();
     document.getElementById("panel").innerText="Panel egreso";
 });
-
 
 function recuperar(){
     var cabecera=`
