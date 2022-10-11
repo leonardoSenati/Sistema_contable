@@ -62,8 +62,14 @@ function Footer()
 $pdf = new PDF();
 $pdf->AliasNbPages();
 $pdf->AddPage();
+#set un times de tamaño 12
 $pdf->SetFont('Times','',12);
+
+
+#Guardar dato id
 $id=$_GET['id'];
+
+#Ejecutar sentencia query con el parametro id
 $query = $connection->query("select i.id_ingreso,i.id_caja,p.n_proyecto,i.fecha,e.monto,c.fecha as fecha_caja, e.descripcion from ingreso as i 
 inner join caja as c on c.id_caja=i.id_caja
 inner join proyecto as p on p.id_proyecto=c.id_proyecto 
@@ -82,7 +88,7 @@ foreach($query->fetchAll(PDO::FETCH_ASSOC) as $row){
     
 }
 
-
+#sentencia SQL de el monto, el IGV y el Monto total
 $query1 = $connection->query("select c.total_monto as totald,r.igv as igb,sum(eg.monto) *r.igv as resultadoigv,sum(eg.monto) as totalegresos from proyecto as p
 inner join caja as c on c.id_proyecto=p.id_proyecto
 inner join cliente as cl on cl.ruc_cliente = p.ruc_cliente
@@ -90,6 +96,7 @@ inner join rubro as r on r.id_rubro = cl.id_rubro
 inner join egreso as eg on eg.id_proyecto=p.id_proyecto
 where p.n_proyecto='" . $id . "'");
 
+#Pintar Cada vuelta de bucle inserta cada valor en una casilla
 foreach($query1->fetchAll(PDO::FETCH_ASSOC) as $row){
     $pdf->Cell(110);
     $pdf->setFillColor(26, 93, 168);
@@ -124,7 +131,7 @@ foreach($query1->fetchAll(PDO::FETCH_ASSOC) as $row){
 
 
 
-
+#Guarda y ejecuta todo lo hecho.
 $pdf->Output();
 
 ?>
