@@ -318,10 +318,10 @@ $(document).on("keyup", "#correo", function () {
 
     if (/[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}/.test(correo)
     ) {
-      $("#mensaje5").text("Correo valido").css("color", "green");
+      $("#mensajeCorreo").text("Correo valido").css("color", "green");
       validarCorreo++;
     } else {
-      $("#mensaje5").text("Correo invalido").css("color", "red");
+      $("#mensajeCorreo").text("Correo invalido").css("color", "red");
     }
     validarCorreoGlobal = validarCorreo;
 });
