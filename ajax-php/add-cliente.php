@@ -1,5 +1,16 @@
 <?php
+//Esta funcion incluye al archivo externo conexion.php
 require '../conexion.php';
+/**
+ * ruc_cliente - numero - Almacena varible externa ruc que obtnemos con la funcion filter_input.
+ * nombre_clie - cadena de texto - Almacena varible externa clie que obtnemos con la funcion filter_input.
+ * apellido - cadena de texto  - Almacena varible externa ape que obtnemos con la funcion filter_input.
+ * correo - cadena de texto - Almacena varible externa ruc que obtnemos con la funcion filter_input.
+ * telefono - numero - Almacena varible externa ruc que obtnemos con la funcion filter_input.
+ * rubro - cadena de texto - Almacena varible externa ruc que obtnemos con la funcion filter_input.
+ * verificar - instruccion sql para consultar si existe el ruc  o el correo del cliente.
+ * sql - instruccion sql para insertar cliente.
+ */
 $ruc_cliente= filter_input(INPUT_POST, 'ruc');
 $nombre_clie= filter_input(INPUT_POST, 'clie');
 $apellido= filter_input(INPUT_POST, 'ape');

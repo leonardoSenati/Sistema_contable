@@ -1,7 +1,10 @@
 <?php
 
+#Importar la libreria fpdf y la conexión
 require("../pdf/fpdf.php");
 require("../conexion.php");
+
+#crear la clase y extender de la clase FPDF de la libreria
 class PDF extends FPDF
 {
 // Page header
@@ -16,17 +19,22 @@ function Header()
     $this->SetTextColor(19, 105, 200 );
     $this->Text(10,15,"Sistema Contable");
     $this->SetFont('Arial','B',12);
+   
     // Move to the right
-    
     $this->Cell(80);
+    
     // Title
     $this->setFillColor(26, 93, 168);
     $this->SetTextColor(255,255,255);
     $this->Cell(30,10,'Ingresos',"B",0,'C',True);
+    
     // Line break
     $this->Ln(40);
 
+    //Set un color a la casilla
     $this->setFillColor(26, 93, 168);
+
+    #Set casilla con un tamaño de 20 y 10 con el valor de Boleta
     $this->cell(20,10,"Boleta",1,0,"C",True);
 
     $this->setFillColor(26, 93, 168);
@@ -59,9 +67,16 @@ function Footer()
 $pdf = new PDF();
 $pdf->AliasNbPages();
 $pdf->AddPage();
+
+#Set un tipo de fuente
 $pdf->SetFont('Times','',12);
+
+#Obtener los datos del GET
 $fech_min=$_GET['fmin'];
 $fech_max=$_GET['fmax'];
+
+
+#SQL que mostrará los datos en formato PDF
 $query = $connection->query("select i.id_ingreso,i.id_caja,p.n_proyecto,i.fecha,i.monto_ingreso,c.fecha as fecha_caja from ingreso as i inner join caja as c on c.id_caja=i.id_caja
 inner join proyecto as p on p.id_proyecto=c.id_proyecto
 where i.fecha>='".$fech_min."' and i.fecha<='".$fech_max."'");
@@ -81,12 +96,11 @@ foreach($query->fetchAll(PDO::FETCH_ASSOC) as $row){
         $pdf->SetTextColor(0,0,0);
     }
 
-    
+    #Salto de linea 11 espacios
     $pdf->Ln(11);
 }
 
-
-
+#Fin de todo el PDF
 $pdf->Output();
 
 ?>

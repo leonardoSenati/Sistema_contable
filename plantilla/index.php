@@ -5,6 +5,8 @@ if (isset($_SESSION['dni_admin'])) {
     <!DOCTYPE html>
     <html lang="es">
 
+    
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +15,7 @@ if (isset($_SESSION['dni_admin'])) {
         <link rel="stylesheet" href="../css/egresos.css">
         <link rel="stylesheet" href="../css/caja.css">
         <link rel="stylesheet" href="styles.css">
-        <title>Panel Admin</title>
+        <title id="titulo_panel">Panel </title>
         <!--link de iconos de bootrap-->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -103,7 +105,12 @@ if (isset($_SESSION['dni_admin'])) {
         <script src="../php/ingreso.js"></script>
         <script src="validacion.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <!-- Script para desactivar el F12 -->
         <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
+
+      <!--  <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>  -->
+
     </body>
 
     </html>

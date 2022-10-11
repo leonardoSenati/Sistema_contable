@@ -1,13 +1,28 @@
+/*
+Evento click que se dispara cuando se presiona el link de tipo button para abrir el panel cliente.
+ */
 $(document).on('click','#cli',function(){
     recuperar_tarea();
     document.getElementById("panel").innerText="Panel cliente";
+    document.getElementById("titulo_panel").innerText="Panel cliente";
 });
+
+
+/**
+ * Esta funcion envia datos a traves del metodo GET por medio ajax al archivo administrador.php
+ * método $.ajax
+ * URL - para la petición.
+ * type - especifica que será una petición POST.
+ * data - la información a enviar.
+ * lista_actividad - almacena al objeto.  
+ */
 function recuperar_tarea(){
     $.ajax({
         url:'../ajax-php/cliente.php',
         type:'GET',
         success:function(data){
             var lista_actividad=JSON.parse(data);
+
             var cabecera=`<div class="main">
             <div class="cards">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop3" id="agregacli"><i class="bi bi-person-plus"></i> 
@@ -216,7 +231,14 @@ function recuperar_tarea(){
 }
 
 
-//llenar modal de lista proyecto
+/**
+ * Evento click que abre el modal lista de proyectos.
+ * método $.ajax
+ * URL - para la petición.
+ * type - especifica que será una petición POST.
+ * data - la información a enviar.
+ * lista_actividad2 - almacena al objeto.  
+ */
 $(document).on('click','.proyecto_cli',function(){
     $("#staticBackdrop7").modal("show");
     var element=$(this)[0].parentElement.parentElement;
@@ -247,8 +269,11 @@ $(document).on('click','.proyecto_cli',function(){
             $('#lista_p').html(registros1);
         }
     });
-        //llenar modal de agregar proyecto
-        $(document).on('click','.agregar_pro',function(){
+
+/**
+ * Evento click que abre el modal agregar proyecto.
+ */ 
+ $(document).on('click','.agregar_pro',function(){
             $("#staticBackdrop5").modal("show");
             $("#staticBackdrop7").modal("hide");
             console.log(ids);
@@ -256,7 +281,13 @@ $(document).on('click','.proyecto_cli',function(){
         })
 })
 
-//llenar modal de agregar proyecto
+/**
+ * Evento click que se ejecuta cuando le damos click al boton se registrar proyecto.
+ * método $.ajax
+ * URL - para la petición.
+ * type - especifica que será una petición POST.
+ * data - la información a enviar. 
+ */
 $(document).on('click','#btnIngreso5',function(){
     
     var id=document.getElementById("ruc_cliente3").value;
@@ -298,7 +329,13 @@ $(document).on('click','#btnIngreso5',function(){
 
 })
 
-
+/**
+ * Evento click que se ejecuta cuando le damos click al boton se registrar proyecto.
+ * método $.ajax
+ * URL - para la petición.
+ * type - especifica que será una petición POST.
+ * data - la información a enviar. 
+ */
 $(document).on('click','#agregacli',function(){
     $.ajax({
         url:'../ajax-php/rubro.php',
@@ -315,7 +352,11 @@ $(document).on('click','#agregacli',function(){
             }  
     });
 })
-//agregar cliente
+
+
+/**
+ * Evento click que se ejecuta cuando le damos click al boton agregar cliente.
+ */
 $(document).on('click','#btnIngreso3',function(){
     var ruc_cliente=$('#ruc_cliente').val();
     var nombre_clie=$('#nombre_clie').val();
@@ -356,7 +397,9 @@ $(document).on('click','#btnIngreso3',function(){
     }
 });
 
-//llenar modal
+/**
+ * Evento click al boton actualizar cliente - abre modal para llenar datos.
+ */
 $(document).on('click','.update_cli',function(){
     $("#staticBackdrop4").modal("show");
     var element=$(this)[0].parentElement.parentElement;
@@ -371,7 +414,13 @@ $(document).on('click','.update_cli',function(){
     });
 });
 
-//actualizar cliente
+/**
+ * Evento click al boton actualizar cliente - Envia los nuevos datos por ajax al archivo update-cliente.php
+ * método $.ajax
+ * URL - para la petición.
+ * type - especifica que será una petición POST.
+ * data - la información a enviar.
+ */
 $(document).on('click','#btnIngreso4',function(){
     var ruc_cliente=$('#ruc_cliente2').val();
     var nombre_clie=$('#nombre_clie2').val();
@@ -403,7 +452,9 @@ $(document).on('click','#btnIngreso4',function(){
     }
 });
 
-//eliminar(cambia status)
+/**
+ * Evento click al boton eliminar cliente - cambia el status del cliente eliminado a 0 en la base de datos.
+ */
 $(document).on('click','.delete_cli',function(){
 
     Swal.fire({
@@ -431,7 +482,9 @@ $(document).on('click','.delete_cli',function(){
 });
 
 
-//eliminar proyecto (cambia status)
+/**
+ * Evento click al boton eliminar proyecto - cambia el status del proyecto eliminado a 0 en la base de datos.
+ */
 $(document).on('click','.eliminar_pro',function(){
 
     Swal.fire({

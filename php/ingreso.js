@@ -1,11 +1,27 @@
+
 // En este evento click llamaremos a la función recuperar ingreso
 // y cambiaremos el text ó de panel a panel ingreso
 
+
+/*
+Evento click que se dispara cuando se presiona el link de tipo button para abrir el panel ingreso.
+ */
 $(document).on('click','#ing',function(){
     recuperar_ingreso()
     document.getElementById("panel").innerText="Panel ingreso";
+    document.getElementById("titulo_panel").innerText="Panel ingresos";
+    
 });
 //esta funcion se  implemta el ajax para mostar los datos q se visualizaran
+
+/**
+ * Esta funcion envia datos a traves del metodo GET por medio ajax al archivo ingresos.php
+ * método $.ajax
+ * URL - para la petición.
+ * type - especifica que será una petición GET.
+ * data - la información a enviar.
+ *  la var cabecera que contiene el formulario para obtener los datos del fecha Inicio,fecha fin y la tabla de reportes.
+ */
 function recuperar_ingreso(){
     $.ajax({
         url:'../php/ingresos.php',
@@ -77,16 +93,25 @@ function recuperar_ingreso(){
             $('#cabecera').html(cabecera+registros+fin);
             fecha_actual("fechmin");
             fecha_post("fechmax");
-            /*---------------------------Pruebas para paginacion--------------------------------*/
-            /*---------------------------------linea 51,52--------------------------------------*/
             cantitad_registros();
-            /*---------------------------Pruebas para paginacion--------------------------------*/
+           
         } 
     });
 }
-/*---------------------------Pruebas para paginacion--------------------------------*/
-/*---------------------------Pruebas para paginacion--------------------------------*/
-/*---------------------------Pruebas para paginacion--------------------------------*/
+
+/**
+ * funcion cantitad_registros para la paginacion.
+ * método $.ajax 
+ * URL - ruta del archivo prueba_cantida.php para la petición.
+ * type - especifica que será una petición POST
+ * success - Establece una función a ejecutar si la petición a sido satisfactoria.
+ * lista_actividad - variable que almacenar al objeto 
+ * fila - variable de tipo array - almacena los elementos del objeto.
+ * registro - variable de estructura html donde a la etiqueta input en su valor le colocamos los datos que tiene los respectivos elementos.
+ * n - id de la etiqueta div - donde se va colocar los valores de la var registro.
+ * cant - variable que va almacenar los datos de registro.
+ * paginacion - funcion que va enviar como parametro a la car cant y el 1(pagina).
+ */
 function cantitad_registros(){
     $.ajax({
         url:'../php/prueba_cantida.php',
@@ -104,8 +129,9 @@ function cantitad_registros(){
     });
 }
 
-
-
+/**
+ * funcion para la paginacion.
+ */
 function paginacion(cant,pag){
     var n=parseInt(cant/10);
     var decimal=parseFloat(cant/10);
@@ -124,8 +150,7 @@ function paginacion(cant,pag){
     </center>
     `;
     if(decimal>1)
-    {
-        console.log(decimal);
+    { 
         if(n<decimal){
             n=n+1;
         }
@@ -170,7 +195,13 @@ function paginacion(cant,pag){
     $('#paginacion').html(btn_ini+n_button+btn_fin);
 }
 
+
 //En este evento click nos mostrará los Datos en una lista de 10
+
+/*
+* Evento click que se dispara cuando se presiona el link de tipo button para la paginacion.
+ */
+
 $(document).on('click','.page-link',function(){
     var pag =this.id;
     var cant=document.getElementById("registro").value;
@@ -204,17 +235,19 @@ $(document).on('click','.page-link',function(){
         }
     });
 });
-/*---------------------------Pruebas para paginacion--------------------------------*/
-/*---------------------------Pruebas para paginacion--------------------------------*/
-/*---------------------------Pruebas para paginacion--------------------------------*/
 
-
+/*
+ *Evento click que se dispara cuando se presiona el buton para generar pdf.
+ */
 $(document).on('click','.generar-pdf',function(){
     var fecha_min=document.getElementById("fechmin").value;
     var fecha_max=document.getElementById("fechmax").value;
     window.open("../php/ingresospdf.php?fmin="+fecha_min+"&&fmax="+fecha_max,'_blank');
 });
 
+/*
+ *Evento click que se dispara cuando se presiona el buton para generar excel.
+ */
 $(document).on('click','.generar-excel',function(){
     var fecha_min=document.getElementById("fechmin").value;
     var fecha_max=document.getElementById("fechmax").value;

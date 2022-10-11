@@ -1,6 +1,21 @@
 <?php
+
 //se captura las varibles atraves del input_post que se envio en el ajax
+
+/**
+ * Esta funcion incluye al archivo externo conexion.php
+ */
+
 require '../conexion.php';
+/**
+ * id_proyecto - numero - Almacena variable externa id_p que obtenemos con la funcion filter_input.
+ * fecha - date - Almacena varible externa fech que obtenemos con la funcion filter_input.
+ * total_monto - numero - Almacena varible externa monto que obtenemos con la funcion filter_input.
+ * rucs - numero - Almacena varible externa ruc que obtenemos con la funcion filter_input.
+* verificar - instruccion sql para consultar si existe el id del proyecto en la tabla caja.
+ * sql - instruccion sql para insertar datos en tabla caja.
+ * sentenciaV - recibe el resultado de la consulta sql y posteriormente lo ejecuta.
+ */
 $id_proyecto= filter_input(INPUT_POST, 'id_p');
 $fecha= filter_input(INPUT_POST, 'fech');
 $total_monto= filter_input(INPUT_POST, 'monto');
@@ -32,7 +47,4 @@ if($row=$sentenciaV->fetch(PDO::FETCH_ASSOC)>0){
     }
 
 }
-
-
-
 ?>
