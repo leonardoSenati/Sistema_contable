@@ -8,7 +8,7 @@
 // se mostrará lo que es el id de la caja y el resultado y se enviará al ajax en formato jason
 /**
  * Esta funcion incluye al archivo externo conexion.php
-
+*/
 require '../conexion.php';
 
 /**
