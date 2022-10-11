@@ -318,7 +318,7 @@ $(document).on("keyup", "#correo", function () {
 
     if (/[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}/.test(correo)
     ) {
-    
+
       $("#mensajeCorreo").text("Correo valido").css("color", "green");
       validarCorreo++;
     } else {

@@ -1,4 +1,8 @@
 
+// En este evento click llamaremos a la función recuperar ingreso
+// y cambiaremos el text ó de panel a panel ingreso
+
+
 /*
 Evento click que se dispara cuando se presiona el link de tipo button para abrir el panel ingreso.
  */
@@ -8,6 +12,7 @@ $(document).on('click','#ing',function(){
     document.getElementById("titulo_panel").innerText="Panel ingresos";
     
 });
+//esta funcion se  implemta el ajax para mostar los datos q se visualizaran
 
 /**
  * Esta funcion envia datos a traves del metodo GET por medio ajax al archivo ingresos.php
@@ -68,6 +73,8 @@ function recuperar_ingreso(){
             <div id="paginacion">
             </div>`;
             var registros='';
+            // en esta forech mostraremos los Datos De ingresos 
+            // los cuales son el id de la caja el nombre del proyecto la fecha la fecha de la caja y el monto del ingreso
             lista_actividad.forEach(fila=>{
                 registros +=`
                 <tr ID="${fila.id_ingreso}">
@@ -188,9 +195,13 @@ function paginacion(cant,pag){
     $('#paginacion').html(btn_ini+n_button+btn_fin);
 }
 
+
+//En este evento click nos mostrará los Datos en una lista de 10
+
 /*
 * Evento click que se dispara cuando se presiona el link de tipo button para la paginacion.
  */
+
 $(document).on('click','.page-link',function(){
     var pag =this.id;
     var cant=document.getElementById("registro").value;

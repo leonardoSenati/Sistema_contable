@@ -1,7 +1,11 @@
 <?php
+
+//se captura las varibles atraves del input_post que se envio en el ajax
+
 /**
  * Esta funcion incluye al archivo externo conexion.php
  */
+
 require '../conexion.php';
 /**
  * id_proyecto - numero - Almacena variable externa id_p que obtenemos con la funcion filter_input.
@@ -16,12 +20,13 @@ $id_proyecto= filter_input(INPUT_POST, 'id_p');
 $fecha= filter_input(INPUT_POST, 'fech');
 $total_monto= filter_input(INPUT_POST, 'monto');
 $rucs= filter_input(INPUT_POST, 'ruc');
-
+//en esta consulta se selcciona todo de la tabla caja con una condicional de que su id sea igual al que se encuentra en la base de datos 
 $verificar="select * from caja where id_proyecto ='".$id_proyecto."'";
 $sql="insert into caja(id_proyecto,fecha,total_monto) values(:id_p,:fech,:monto)";
 $sentenciaV=$connection->prepare($verificar);
 $sentenciaV->execute();
 
+// en esta condicional nos musestra que si la varible row es mayor a 0 nos votara un no y caso contrario madaremos los datos al ajax
 if($row=$sentenciaV->fetch(PDO::FETCH_ASSOC)>0){ 
     echo 'no';
 }else{
