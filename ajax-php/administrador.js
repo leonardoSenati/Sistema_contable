@@ -1,8 +1,14 @@
+
+/*
+El bloque $(document).ready() - se ejecutará sólo al momento que se carga la pagina.
+Este bloque valida el tipo de rol del usuario.  
+*/
 $(document).ready(function(){
     var acceso=document.getElementById("acceso").value;
     if(acceso=="12345678"){
         recuperar_tareas();
         document.getElementById("panel").innerText="Panel administrador";
+
     }else{
         recuperar_tarea();
         document.getElementById("panel").innerText="Panel cliente";
@@ -10,10 +16,19 @@ $(document).ready(function(){
 
 })
 
+/*
+Evento click que se dispara cuando se presiona el link de tipo button para abrir el panel administrador.
+*/
 $(document).on('click','#adm',function(){
     recuperar_tareas();
     document.getElementById("panel").innerText="Panel administrador";
+    document.getElementById("titulo_panel").innerText="Panel administrador";
+
 });
+
+/**
+ *alerta para algun elemento en desarrollo.(no se esta ejecutando)
+ */
 function desarrollo(){
     Swal.fire({
         title: 'Aún en desarrollo',
@@ -26,12 +41,18 @@ function desarrollo(){
       })
 }
 
+/*
+Esta funcion envia datos a traves del metodo GET por medio ajax al archivo administrador.php
+var cabecera - contiene el modal de registro de administrador y de actualizacion. 
+registros - arreglo en formarto json.
+*/
 function recuperar_tareas(){
     $.ajax({
         url:'../ajax-php/administrador.php',
         type:'GET',
         success:function(data){
             var lista_actividad=JSON.parse(data);
+
             var cabecera=`
             <div class="main">
             <div class="cards">
@@ -45,9 +66,7 @@ function recuperar_tareas(){
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellido</th>
                     <th scope="col">Correo</th>
-                    <th scope="col">
-                    
-									
+                    <th scope="col">						
                     </th>
                     </tr>
                 </thead>
@@ -57,8 +76,6 @@ function recuperar_tareas(){
             </table>
             </div>
             </div>
-				  
-	  
         </div>
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
@@ -69,6 +86,7 @@ function recuperar_tareas(){
                     </div>
                     <section id="container">
 		<div class="modal-body">
+
                 <form class="row g-3" id="frm-admin">
                 <div class="col-md-6">
                 <label for="nombre">Nombre:</label>
@@ -171,6 +189,14 @@ function recuperar_tareas(){
 var validarContraGlobal = 0;
 var validarCorreoGlobal = 0;
 
+/*
+*Evento que se ejecuta cuando cuando damos click al boton Agregar usuario.
+*dni_admin - Numero -Numero de DNI del usuaruio administrador.
+*nombre -Cadena de texto - Nombre del usuario.
+*apellido -Cadena de texto - Apellido del usuario.
+*correo  -Cadena de texto - Correo del usuario.
+*password -Cadena alfanumérica - Contraseña del usuario.
+*/
 $(document).on('click','#btnIngreso',function(){
     var dni_admin=$('#dni_admin').val();
     var nombre=$('#nombre').val();
@@ -178,7 +204,6 @@ $(document).on('click','#btnIngreso',function(){
     var correo=$('#correo').val();
     var password=$('#contraseña').val();    
     
-
     if(dni_admin !=='' && nombre !=='' && apellido !=='' && correo !=='' && password !=='' && validarContraGlobal == 4 && validarCorreoGlobal == 1){
         $.ajax({
             url:'../ajax-php/add-admin.php',
@@ -215,8 +240,10 @@ $(document).on('click','#btnIngreso',function(){
     console.log(validarCorreoGlobal);
 });
 
-
-//Validar contraseña
+/**
+ * Evento keyup para detectar la pulsación de una tecla en el input con id contraseña
+ * validarContraseña - Cadena alfanumérica - Validar la contraseña. 
+ */
 $(document).on("keyup", "#contraseña", function () {
     var pass = $("#contraseña").val();
     var validarContraseña = 0;
@@ -243,12 +270,14 @@ $(document).on("keyup", "#contraseña", function () {
     $("#mensajePassword").text("La contraseña debe ser mayor a 8 caracteres y contener '123 , /@!*, QWEASD'").css("color", "red")
   }
 
-  validarContraGlobal = validarContraseña;
-          
+  validarContraGlobal = validarContraseña;      
 });
 
 
-
+/*
+ * Evento keyup para detectar la pulsación de una tecla en el input con id contraseña2
+ * validarContraseña - Cadena alfanumérica - Validar la contraseña. 
+ */
 $(document).on("keyup", "#contraseña2", function () {
   var pass = $("#contraseña2").val();
   var validarContraseña = 0;
@@ -279,14 +308,17 @@ $(document).on("keyup", "#contraseña2", function () {
 
 });
 
-//Validar correo
+/**
+ * Evento keyup para detectar la pulsación de una tecla en el input con id correo
+ * validarCorreo - Cadena alfanumérica - Validar el correo. 
+ */
 $(document).on("keyup", "#correo", function () {
     var correo = $("#correo").val();
      var validarCorreo = 0;
 
     if (/[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}/.test(correo)
     ) {
-      
+    
       $("#mensajeCorreo").text("Correo valido").css("color", "green");
       validarCorreo++;
     } else {
@@ -295,6 +327,10 @@ $(document).on("keyup", "#correo", function () {
     validarCorreoGlobal = validarCorreo;
 });
 
+/**
+ * Evento keyup para detectar la pulsación de una tecla en el input con id correo2
+ * validarCorreo - Cadena alfanumérica - Validar el correo. 
+ */
 $(document).on("keyup", "#correo2", function () {
     var correo = $("#correo2").val();
     var validarCorreo = 1;
@@ -304,17 +340,20 @@ $(document).on("keyup", "#correo2", function () {
     ) {
       $("#mensaje55").text("Correo valido").css("color", "green");
       validarCorreo = 1;
-      console.log(validarCorreo)
+     
     } else {
       $("#mensaje55").text("Correo invalido").css("color", "red");
       validarCorreo = 0;
       
     }
-  console.log(validarCorreo)
+
   validarCorreoGlobal = validarCorreo;
 
 });
 
+/**
+ * Evento click que se ejecuta cuando le damos click al boton actualizar administrador.
+ */
 $(document).on('click','.update_adm',function(){
     $("#staticBackdrop1").modal("show");
     var element=$(this)[0].parentElement.parentElement;
@@ -332,6 +371,9 @@ $(document).on('click','.update_adm',function(){
     });
 });
 
+/**
+ * Evento click que se ejecuta cuando le damos click al boton ingreso 2.
+ */
 $(document).on('click','#btnIngreso2',function(){
     var dni_admin=$('#dni_admin2').val();
     var nombre=$('#nombre2').val();
@@ -363,11 +405,17 @@ $(document).on('click','#btnIngreso2',function(){
     }
 });
 
+/**
+ * Evento click que se ejecuta cuando le damos click al boton cerrar que corresponde al modal.
+ */
 $(document).on('click','#btnCerrar',function(){
     $("#staticBackdrop").modal("show");
     document.getElementById("frm-admin").reset(); 
 })
 
+/**
+ * Evento click que se ejecuta cuando le damos click en eliminar un usuario administrador.
+ */
 $(document).on('click','.delete_adm',function(){
 
     Swal.fire({
