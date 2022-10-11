@@ -4,6 +4,7 @@ if (isset($_SESSION['dni_admin'])) {
   header('location: plantilla/');
 } else {
 ?>
+<!--  VISTA LOGIN   -->
   <!DOCTYPE html>
   <html lang="en">
 

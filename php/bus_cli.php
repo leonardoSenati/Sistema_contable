@@ -1,5 +1,13 @@
 <?php
+/**
+ * Esta funcion incluye al archivo externo conexion.php
+ */
 require '../conexion.php';
+/**
+ * sql - instruccion sql - consulta a la tabla cliente.
+ * resultado - recibe el resultado de la consulta sql y posteriormente lo ejecuta.
+ * json_encode - convierte el array de datos en formato JSON
+ */
 $sql ="select * from cliente";
 $resultado = $connection->prepare($sql);
 $resultado->execute();

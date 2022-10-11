@@ -1,5 +1,14 @@
 <?php
+//Esta funcion incluye al archivo externo conexion.php
 require '../conexion.php';
+/**
+ * ruc_cliente - numero - Almacena varible externa ruc_cliente que obtenemos con la funcion filter_input.
+ * nombre_pro -  cadena de texto - Almacena varible externa n_proyect que obtenemos con la funcion filter_input.
+ * inversion - numero - Almacena varible externa inver que obtenemos con la funcion filter_input.
+ * verificar - instruccion sql para consultar si existe el nombre_pro  del proyecto.
+ * sql -  instruccion sql para insertar proyecto.
+ * sentenciaV recibe el resultado de la consulta sql y posteriormente lo ejecuta.
+ */
 $ruc_cliente= filter_input(INPUT_POST, 'ruc_cliente');
 $nombre_pro= filter_input(INPUT_POST, 'n_proyect');
 $inversion= filter_input(INPUT_POST, 'inver');

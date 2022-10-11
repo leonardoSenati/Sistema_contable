@@ -1,5 +1,18 @@
 <?php
+/**
+ * Esta funcion incluye al archivo externo conexion.php
+ */
 require '../conexion.php';
+
+/**
+ * id_proyecto - numero - Almacena variable externa id_p que obtenemos con la funcion filter_input.
+ * monto - numero - Almacena varible externa monto que obtenemos con la funcion filter_input.
+ * rucs - numero - Almacena varible externa ruc que obtenemos con la funcion filter_input.
+ * fecha - date - Almacena varible externa y le da el formato d-m-Y que obtenemos con la funcion filter_input.
+ * obtner_id - numero  - consulta sql aplicando procedimiento almacenado
+ * $sentencia1 - recibe el resultado de la consulta sql y posteriormente lo ejecuta.
+ */
+ 
 $id_proyecto= filter_input(INPUT_POST, 'id_p');
 $monto= filter_input(INPUT_POST, 'monto');
 $rucs= filter_input(INPUT_POST, 'ruc');
