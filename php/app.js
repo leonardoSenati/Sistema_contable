@@ -1,35 +1,16 @@
-/**
- * booton - con el metodo getElementById buscamos el elemento agregar y lo guardamos en la var booton.
- * guardar - con el metodo getElementById buscamos el elemento guardar y lo guardamos en la var guardar.
- * lista - con el metodo getElementById buscamos el elemento guardar y lo guardamos en la var lista.
- */
 var booton=document.getElementById('agregar');
 var guardar=document.getElementById('guardar');
 var lista=document.getElementById('lista');
 
-/**
- * data - array - inicializando el  array en vacio.
- * cant - variable -  inicializando la variable en cero.
- */
 var data=[];
 var cant=0;
 
-/*
-Evento click que se dispara cuando se presiona el link de tipo button para agregar proyecto.
- */
 $(document).on('click','#agregar',function(){
     agregar();
 });
-/*
-Evento click que se dispara cuando se presiona el link de tipo button para guardar proyecto.
- */
 $(document).on('click','#guardar',function(){
     save();
 });
-
-/**
- * 
- */
 function agregar(){
     var id_proyecto=document.getElementById('proyects').value;
     var combop=document.getElementById('proyects');
@@ -54,7 +35,6 @@ function agregar(){
             "monto":monto
         }
     );
-    
     var id_row='row'+cant;
     var fila='<tr id='+id_row+'> <td>'+selectp+'</td><td>'+nombre+'</td><td>'+fecha+'</td><td>'+select+'</td><td>s/'+monto+'</td> <td><a class="btn btn-danger bi bi-journal-minus " onclick="eliminar('+cant+')" href="#" role="button"></a></td></tr>';
 
