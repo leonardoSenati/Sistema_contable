@@ -105,7 +105,12 @@ if (isset($_SESSION['dni_admin'])) {
         <script src="../php/ingreso.js"></script>
         <script src="validacion.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <!-- Script para desactivar el F12 -->
+        <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
+
       <!--  <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>  -->
+
     </body>
 
     </html>

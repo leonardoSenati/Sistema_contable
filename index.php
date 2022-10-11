@@ -54,6 +54,7 @@ if (isset($_SESSION['dni_admin'])) {
 
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 
+<!-- Script para desactivar el F12 -->
 <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

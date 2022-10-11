@@ -73,9 +73,6 @@ $(document).on('keydown','#nombre_proyecto2',function(){
 });
 
 
-
-
-
 function fecha_actual(id){
     var hoy =new Date();
     var dia=hoy.getDate();// dia actual del servidor local
