@@ -314,7 +314,7 @@ $(document).on('click','#btnIngreso5',function(){
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: 'El RUC o Correo ya estan siendo usados!'
+                    text: 'El nombre del proyecto ya esta siendo usado. Por favor use uno distinto'
                 })
             }
         }
@@ -365,29 +365,40 @@ $(document).on('click','#btnIngreso3',function(){
     var telefono=$('#telefono').val();
     var rubro=$('#rubro').val();
     if(ruc_cliente !=='' && nombre_clie !=='' && apellido !=='' && correo !=='' && telefono !=='' && rubro !=='' ){
-        $.ajax({
-            url:'../ajax-php/add-cliente.php',
-            type:'POST',
-            data:{ruc:ruc_cliente,clie:nombre_clie,ape:apellido,cor:correo,tel:telefono,rub:rubro},
-            success:function(data){
-                if(data=='yes'){
-                    Swal.fire({
-                        icon: 'success',
-                        text: 'Se registro exitosamente!!'
-                    }).then(function(){
-                        $("#staticBackdrop3").modal("hide");
-                        recuperar_tarea();
-                        document.getElementById("frm-cli").reset(); 
-                    });
-                }else{
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'El RUC o Correo ya estan siendo usados!'
-                    })
+
+        if(ruc_cliente.length == 11){
+            $.ajax({
+                url:'../ajax-php/add-cliente.php',
+                type:'POST',
+                data:{ruc:ruc_cliente,clie:nombre_clie,ape:apellido,cor:correo,tel:telefono,rub:rubro},
+                success:function(data){
+                    if(data=='yes'){
+                        Swal.fire({
+                            icon: 'success',
+                            text: 'Se registro exitosamente!!'
+                        }).then(function(){
+                            $("#staticBackdrop3").modal("hide");
+                            recuperar_tarea();
+                            document.getElementById("frm-cli").reset(); 
+                        });
+                    }else{
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'El RUC o Correo ya estan siendo usados!'
+                        })
+                    }
                 }
-            }
-        });  
+            });  
+        } else {
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Error...',
+                text: 'RUC debe tener 11 Digitos'
+              })
+        }
+        
     }else{
         Swal.fire({
             icon: 'error',

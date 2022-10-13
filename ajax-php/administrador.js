@@ -204,8 +204,11 @@ $(document).on('click','#btnIngreso',function(){
     var correo=$('#correo').val();
     var password=$('#contraseña').val();    
     
-    if(dni_admin !=='' && nombre !=='' && apellido !=='' && correo !=='' && password !=='' && validarContraGlobal == 4 && validarCorreoGlobal == 1){
-        $.ajax({
+    if(dni_admin !=='' && nombre !=='' && apellido !=='' && correo !=='' && password !==''){
+
+        if(validarContraGlobal == 4 && validarCorreoGlobal ==1 && dni_admin.length == 8){
+
+          $.ajax({
             url:'../ajax-php/add-admin.php',
             type:'POST',
             data:{dni:dni_admin,nom:nombre,ape:apellido,cor:correo,contra:password},
@@ -228,6 +231,17 @@ $(document).on('click','#btnIngreso',function(){
                 }
             }
         });  
+
+        } else {
+
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'DNI, correo o contraseña no son validos!'
+
+          })
+        }
+        
     }else{
         Swal.fire({
             icon: 'error',
@@ -236,8 +250,7 @@ $(document).on('click','#btnIngreso',function(){
 
           })
     }
-    console.log(validarContraGlobal);
-    console.log(validarCorreoGlobal);
+   
 });
 
 /**

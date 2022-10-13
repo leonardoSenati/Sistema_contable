@@ -12,7 +12,10 @@ require '../conexion.php';
 $ruc_cliente= filter_input(INPUT_POST, 'ruc_cliente');
 $nombre_pro= filter_input(INPUT_POST, 'n_proyect');
 $inversion= filter_input(INPUT_POST, 'inver');
-$verificar="select * from proyecto where n_proyecto='".$nombre_pro."'";
+$verificar="select * from proyecto as p
+inner join cliente as c on c.ruc_cliente = p.ruc_cliente
+where p.n_proyecto='".$nombre_pro."' and c.status=1";
+
 $sql="insert into proyecto(ruc_cliente,n_proyecto,inversion,estado) values(:ruc_cliente,:n_proyect,:inver,'1')";
 
 $sentenciaV=$connection->prepare($verificar);

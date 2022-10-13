@@ -8,7 +8,7 @@ require '../conexion.php';
  * resultado - recibe el resultado de la consulta sql y posteriormente lo ejecuta.
  * json_encode - convierte el array de datos en formato JSON
  */
-$sql ="select * from cliente";
+$sql ="select * from cliente where status = 1";
 $resultado = $connection->prepare($sql);
 $resultado->execute();
 $json=array();

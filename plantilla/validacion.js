@@ -72,6 +72,11 @@ $(document).on('keydown','#nombre_proyecto2',function(){
     SoloLetra("#nombre_proyecto2");
 });
 
+$(document).on('keydown','#inversion',function(){    
+    SoloNumero("#inversion");
+});
+
+
 
 function fecha_actual(id){
     var hoy =new Date();

@@ -294,39 +294,52 @@ $(document).on('click','#guardar_caja',function(){
     var fecha=$('#fech').val();
     var total_monto=$('#total').val();
     var rucs=$('#rucs').val();
-    if(id_proyecto !=='null' && fecha !=='' && total_monto !==''&& rucs !==''  ){
+    if(fecha !=='' && total_monto !==''&& rucs !==''  ){
 
-        $.ajax({
-            url:'../php/add_caja.php',
-            type:'POST',
-            data:{id_p:id_proyecto,fech:fecha,monto:total_monto,ruc:rucs},
-
-            success:function(data){
-                
-                if(data=='yes'){
-                    Swal.fire({
-                        icon: 'success',
-                        text: 'Se registro exitosamente!!'
-                    }).then(function(){
-                        insertar_datos()
-                        recuperar_caja(); 
-                    });
-                }else if(data=='no'){
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Ya esta registrado!'
-                    })
+        if(id_proyecto !=='null'){
+            $.ajax({
+                url:'../php/add_caja.php',
+                type:'POST',
+                data:{id_p:id_proyecto,fech:fecha,monto:total_monto,ruc:rucs},
+    
+                success:function(data){
+                    
+                    if(data=='yes'){
+                        Swal.fire({
+                            icon: 'success',
+                            text: 'Se registro exitosamente!!'
+                        }).then(function(){
+                            insertar_datos()
+                            recuperar_caja(); 
+                        });
+                    }else if(data=='no'){
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Ya esta registrado!'
+                        })
+                    }
+    
                 }
+            });
 
-            }
-        });
+        } else {
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'El proyecto no tiene ningun gasto'
+              })
+
+        }
+
+        
 
     }else{
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Complete todos los datos!'
+            text: 'No ha elegido ningun proyecto'
           })
     }
 });
